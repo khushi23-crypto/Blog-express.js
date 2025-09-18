@@ -16,10 +16,14 @@ router.get('/blog',(req,res)=>{
 })
 router.get('/blogpost/:slug',(req,res)=>{
     myBlog=blogs.filter((e)=>{
-        e.slug==req.params.slug
+      return  e.slug==req.params.slug
     })
-    console.log(myBlog)
+    res.render('blogPage',{
+    title: myBlog[0].title,
+    content: myBlog[0].content
+   })
+    /* console.log(myBlog)
     res.sendFile(path.join(__dirname,'../templates/blogPage.html'))
-})
+ */})
 
 module.exports=router
